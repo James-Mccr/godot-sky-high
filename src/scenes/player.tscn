@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://bdnu1ot65rk5e"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_olicq"]
+[ext_resource type="Texture2D" uid="uid://diiyfahvy52nf" path="res://assets/kiwi/kiwi.png" id="1_q27gi"]
+[ext_resource type="Texture2D" uid="uid://capc88etklyel" path="res://assets/kiwi/kiwi-walk-1.png" id="2_hj2ow"]
+[ext_resource type="Texture2D" uid="uid://47yg31jb2e22" path="res://assets/kiwi/kiwi-walk-2.png" id="3_7m5cb"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ntybn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_q27gi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hj2ow")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_7m5cb")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y4mng"]
+size = Vector2(14, 16)
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(50, 50)
+collision_layer = 4
+collision_mask = 3
+floor_constant_speed = true
+script = ExtResource("1_olicq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_ntybn")
+animation = &"walk"
+frame_progress = 0.215712
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 0
+shape = SubResource("RectangleShape2D_y4mng")
+
+[node name="Camera2D" type="Camera2D" parent="."]
