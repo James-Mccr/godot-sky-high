@@ -1,21 +1,25 @@
-[gd_scene load_steps=6 format=3 uid="uid://cdk7jnnidwe8n"]
+[gd_scene load_steps=5 format=3 uid="uid://cdk7jnnidwe8n"]
 
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_5erhf"]
 [ext_resource type="PackedScene" uid="uid://bdnu1ot65rk5e" path="res://scenes/player.tscn" id="1_o2hcv"]
-[ext_resource type="PackedScene" uid="uid://lgsvxodpna30" path="res://scenes/wall.tscn" id="2_fr2lk"]
-[ext_resource type="PackedScene" uid="uid://cvbduhb6j13hv" path="res://scenes/spring.tscn" id="3_ekxlu"]
-
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_fflse"]
-scenes/1/scene = ExtResource("2_fr2lk")
-scenes/2/scene = ExtResource("3_ekxlu")
-
-[sub_resource type="TileSet" id="TileSet_i5qic"]
-sources/0 = SubResource("TileSetScenesCollectionSource_fflse")
+[ext_resource type="PackedScene" uid="uid://cqp1jfks87pac" path="res://scenes/map-0.tscn" id="3_3ci1e"]
+[ext_resource type="PackedScene" uid="uid://cxgowcgtdhofm" path="res://scenes/hud.tscn" id="4_ylitm"]
 
 [node name="Main" type="Node"]
+script = ExtResource("1_5erhf")
 
-[node name="Player" parent="." instance=ExtResource("1_o2hcv")]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+offset_right = 256.0
+offset_bottom = 512.0
 
-[node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource("TileSet_i5qic")
-format = 2
-layer_0/tile_data = PackedInt32Array(524288, 0, 65536, 524289, 0, 65536, 524290, 0, 65536, 524291, 0, 65536, 524292, 0, 65536, 524293, 0, 65536, 524294, 0, 65536, 524295, 0, 65536, 524296, 0, 65536, 524297, 0, 65536, 524298, 0, 65536, 524299, 0, 65536, 524300, 0, 65536, 524301, 0, 65536, 524302, 0, 65536, 524303, 0, 65536, 327685, 0, 65536, 327686, 0, 65536, 327687, 0, 65536, 327688, 0, 65536, 327689, 0, 65536, 327690, 0, 65536, 131079, 0, 65536, 131080, 0, 65536, 524306, 0, 65536, 524307, 0, 65536, 524308, 0, 65536, 524312, 0, 65536, 524313, 0, 65536, 524314, 0, 65536, 65549, 0, 65536, 65550, 0, 65536, 65553, 0, 65536, 65554, 0, 65536, 65557, 0, 65536, 65558, 0, 65536, 458752, 0, 131072, -327682, 0, 65536, -1048574, 0, 65536, -1703938, 0, 65536, -2686974, 0, 65536, -3538946, 0, 65536, -4259838, 0, 65536, -4980738, 0, 65536, -5898238, 0, 65536, -6225922, 0, 65536, -6619134, 0, 65536, -7143426, 0, 65536, -7995390, 0, 65536, -7995389, 0, 65536, -7995388, 0, 65536, -7995387, 0, 65536, -7995386, 0, 65536, -7995385, 0, 65536, -7995384, 0, 65536, -7995383, 0, 65536, -7995382, 0, 65536)
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(256, 512)
+render_target_update_mode = 4
+
+[node name="Player" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_o2hcv")]
+position = Vector2(25, 245)
+
+[node name="Map-0" parent="SubViewportContainer/SubViewport" instance=ExtResource("3_3ci1e")]
+
+[node name="Hud" parent="." instance=ExtResource("4_ylitm")]

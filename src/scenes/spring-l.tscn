@@ -1,24 +1,24 @@
-[gd_scene load_steps=7 format=3 uid="uid://cvbduhb6j13hv"]
+[gd_scene load_steps=7 format=3 uid="uid://cjocxvly86vx0"]
 
-[ext_resource type="Script" path="res://scripts/spring.gd" id="1_q2k5e"]
-[ext_resource type="Texture2D" uid="uid://uk2l5f3ng50j" path="res://assets/spring-0.png" id="1_ttlri"]
-[ext_resource type="Texture2D" uid="uid://b45eumnac55i3" path="res://assets/spring-1.png" id="2_j3wxd"]
-[ext_resource type="Texture2D" uid="uid://bwihc1lqdwqpn" path="res://assets/spring-2.png" id="3_6egy1"]
+[ext_resource type="Script" path="res://scripts/spring.gd" id="1_4osvb"]
+[ext_resource type="Texture2D" uid="uid://uk2l5f3ng50j" path="res://assets/spring-0.png" id="2_rll86"]
+[ext_resource type="Texture2D" uid="uid://b45eumnac55i3" path="res://assets/spring-1.png" id="3_06c82"]
+[ext_resource type="Texture2D" uid="uid://bwihc1lqdwqpn" path="res://assets/spring-2.png" id="4_ge62s"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qx8e4"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_ttlri")
+"texture": ExtResource("2_rll86")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_j3wxd")
+"texture": ExtResource("3_06c82")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_6egy1")
+"texture": ExtResource("4_ge62s")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_j3wxd")
+"texture": ExtResource("3_06c82")
 }],
 "loop": false,
 "name": &"boing",
@@ -26,7 +26,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_ttlri")
+"texture": ExtResource("2_rll86")
 }],
 "loop": false,
 "name": &"default",
@@ -38,16 +38,17 @@ size = Vector2(14, 12)
 
 [node name="Spring" type="Area2D"]
 texture_filter = 1
+rotation = 4.71239
 collision_layer = 2
 collision_mask = 4
-script = ExtResource("1_q2k5e")
+script = ExtResource("1_4osvb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_qx8e4")
 animation = &"boing"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
+position = Vector2(1.9312e-06, 2)
 shape = SubResource("RectangleShape2D_ddldj")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

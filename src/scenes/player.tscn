@@ -41,10 +41,10 @@ script = ExtResource("1_olicq")
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_ntybn")
 animation = &"walk"
-frame_progress = 0.215712
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 0
 shape = SubResource("RectangleShape2D_y4mng")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
